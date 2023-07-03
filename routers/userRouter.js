@@ -1,9 +1,9 @@
 import { Router } from "express";
-import User from "./db/models.js";
+import User from "../db/models/User-model.js";
 
-const router = new Router();
+const userRouter = new Router();
 
-router.get("/users", async (req, res) => {
+userRouter.get("/users", async (req, res) => {
   try {
     const users = await User.findAll();
     res.json(users);
@@ -14,7 +14,7 @@ router.get("/users", async (req, res) => {
 });
 
 // Route to handle updating user balance
-router.put("/users/:id/balance", async (req, res) => {
+userRouter.put("/users/:id/balance", async (req, res) => {
   try {
     const { id } = req.params;
     const { amount } = req.body;
@@ -34,7 +34,7 @@ router.put("/users/:id/balance", async (req, res) => {
 });
 
 // Route to handle updating user balance
-router.put("/users/:id/meflvl", async (req, res) => {
+userRouter.put("/users/:id/meflvl", async (req, res) => {
   try {
     const { id } = req.params;
     const { amount } = req.body;
@@ -54,7 +54,7 @@ router.put("/users/:id/meflvl", async (req, res) => {
 });
 
 // Route to handle updating timelvl
-router.put("/users/:id/timelvl", async (req, res) => {
+userRouter.put("/users/:id/timelvl", async (req, res) => {
   try {
     const { id } = req.params;
     const { amount } = req.body;
@@ -73,4 +73,4 @@ router.put("/users/:id/timelvl", async (req, res) => {
   }
 });
 
-export default router;
+export default userRouter;
