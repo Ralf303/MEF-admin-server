@@ -13,6 +13,19 @@ userRouter.get("/users", async (req, res) => {
   }
 });
 
+userRouter.post("/users/registration", (req, res) => {
+  const { username, password } = req.body;
+
+  // Здесь вы можете выполнить проверку имени пользователя и пароля
+  // и вернуть соответствующий ответ - true или false
+  console.log(username, password);
+  if (username === "admin" && password === "password") {
+    res.send("true");
+  } else {
+    res.send("false");
+  }
+});
+
 // Route to handle updating user balance
 userRouter.put("/users/:id/balance", async (req, res) => {
   try {
