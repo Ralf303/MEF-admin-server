@@ -1,7 +1,17 @@
+import { config } from "dotenv";
 import { Sequelize } from "sequelize";
 
-export default new Sequelize("MEF", "root", "root", {
-  host: "localhost",
-  port: "3306",
-  dialect: "mysql",
+config({
+  path: process.env.NODE_ENV === "production" ? ".env.prod" : ".env.dev",
 });
+
+export default new Sequelize(
+  process.env.DATABASE,
+  process.env.USER_NAME,
+  process.env.PASSWORD,
+  {
+    host: process.env.HOST,
+    port: process.env.PORT,
+    dialect: "mysql",
+  }
+);

@@ -1,16 +1,8 @@
 import { Router } from "express";
-import Logs from "../db/models/Logs-model.js";
+import GetControllers from "../controllers/getControllers.js";
 
 const logsRouter = new Router();
 
-logsRouter.get("/logs", async (req, res) => {
-  try {
-    const logs = await Logs.findAll();
-    res.json(logs);
-  } catch (error) {
-    console.error("Error retrieving logs:", error);
-    res.status(500).json({ error: "Server error. Unable to fetch logs." });
-  }
-});
+logsRouter.get("/getLogs", GetControllers.getLogs);
 
 export default logsRouter;
