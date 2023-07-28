@@ -1,8 +1,6 @@
-import Logs from "../db/models/Logs-model.js";
-import Roles from "../db/models/Role-model.js";
-import User from "../db/models/User-model.js";
+import Logs from "../../db/models/Logs-model.js";
 
-class GetControllers {
+class LogsGetController {
   async getLogs(req, res) {
     try {
       const logs = await Logs.findAll();
@@ -26,4 +24,4 @@ class GetControllers {
   }
 }
 
-export default new GetControllers();
+export default new LogsGetController();

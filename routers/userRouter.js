@@ -1,22 +1,21 @@
 import { Router } from "express";
-
-import PutControllers from "../controllers/putControllers.js";
-import GetControllers from "../controllers/getControllers.js";
-import PostControllers from "../controllers/postControllers.js";
+import UserGetController from "../controllers/user-controllers/user-get-controller.js";
+import UserPostController from "../controllers/user-controllers/user-post-controller.js";
+import UserPutController from "../controllers/user-controllers/user-put-controller.js";
 
 const userRouter = new Router();
 
-userRouter.get("/getAllUsers", GetControllers.getUsers);
+userRouter.get("/getAllUsers", UserGetController.getUsers);
 
-userRouter.post("/registration", PostControllers.userRegistration);
-
-// Route to handle updating user balance
-userRouter.put("/changeValue/:id/balance", PutControllers.changeBalance);
+userRouter.post("/registration", UserPostController.userRegistration);
 
 // Route to handle updating user balance
-userRouter.put("/changeValue/:id/meflvl", PutControllers.changeMeflvl);
+userRouter.put("/changeValue/:id/balance", UserPutController.changeBalance);
+
+// Route to handle updating user balance
+userRouter.put("/changeValue/:id/meflvl", UserPutController.changeMeflvl);
 
 // Route to handle updating timelvl
-userRouter.put("/changeValue/:id/timelvl", PutControllers.changeTimelvl);
+userRouter.put("/changeValue/:id/timelvl", UserPutController.changeTimelvl);
 
 export default userRouter;
