@@ -7,6 +7,8 @@ const userRouter = new Router();
 
 userRouter.get("/getAllUsers", UserGetController.getUsers);
 
+userRouter.get("/getOneUser/:id", UserGetController.getOneUser);
+
 userRouter.post("/registration", UserPostController.userRegistration);
 
 // Route to handle updating user balance
