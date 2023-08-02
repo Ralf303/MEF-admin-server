@@ -1,4 +1,3 @@
-import User from "../../db/models/User-model.js";
 import UpdateService from "../../services/update-service.js";
 
 class UsersPutController {
@@ -36,6 +35,71 @@ class UsersPutController {
       res
         .status(500)
         .json({ error: "Server error. Unable to update timelvl." });
+    }
+  }
+
+  async changeMineCases(req, res) {
+    try {
+      const update = await UpdateService.mineCasesUpdate(req);
+
+      res.json(update);
+    } catch (error) {
+      console.error("Error updating mineCase:", error);
+      res
+        .status(500)
+        .json({ error: "Server error. Unable to update mineCase." });
+    }
+  }
+
+  async changeFalloutCases(req, res) {
+    try {
+      const update = await UpdateService.falloutCasesUpdate(req);
+
+      res.json(update);
+    } catch (error) {
+      console.error("Error updating falloutCase:", error);
+      res
+        .status(500)
+        .json({ error: "Server error. Unable to update falloutCase." });
+    }
+  }
+
+  async changeBrawlCases(req, res) {
+    try {
+      const update = await UpdateService.brawlCasesUpdate(req);
+
+      res.json(update);
+    } catch (error) {
+      console.error("Error updating brawlCase:", error);
+      res
+        .status(500)
+        .json({ error: "Server error. Unable to update brawlCase." });
+    }
+  }
+
+  async changeHotlineCases(req, res) {
+    try {
+      const update = await UpdateService.hotlineCasesUpdate(req);
+
+      res.json(update);
+    } catch (error) {
+      console.error("Error updating hotlineCase:", error);
+      res
+        .status(500)
+        .json({ error: "Server error. Unable to update hotlineCase." });
+    }
+  }
+
+  async changeDonateCases(req, res) {
+    try {
+      const update = await UpdateService.donateCasesUpdate(req);
+
+      res.json(update);
+    } catch (error) {
+      console.error("Error updating donateCase:", error);
+      res
+        .status(500)
+        .json({ error: "Server error. Unable to update donateCase." });
     }
   }
 }
