@@ -15,6 +15,19 @@ class RegistrationService {
       return { authenticated: false, status: null };
     }
   }
+
+  async authorization(data) {
+    const { id } = data;
+
+    const user = await User.findOne({ where: { chatId: id } });
+    const role = await Roles.findOne({ where: { roleId: user.id } });
+
+    if (role) {
+      return { authenticated: true };
+    } else {
+      return { authenticated: false };
+    }
+  }
 }
 
 export default new RegistrationService();

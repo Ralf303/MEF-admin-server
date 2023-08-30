@@ -16,7 +16,6 @@ class GetUsersControllers {
   }
 
   async getOneUser(req, res) {
-    console.log("дошло");
     const userId = req.params.id;
     try {
       const user = await User.findOne({
